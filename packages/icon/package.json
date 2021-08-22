@@ -1,0 +1,19 @@
+{
+  "name": "@lxy/icon",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "lixiangyu <654762937@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/icon.js",
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

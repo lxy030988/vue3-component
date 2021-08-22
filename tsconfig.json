@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "sourceMap": true,
+    "target": "esnext",
+    "module": "esnext", //模块转化后的格式
+    "moduleResolution": "node",
+    "allowJs": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true, //支持模块块
+    "skipLibCheck": true, //跳过类库检测
+    "forceConsistentCasingInFileNames": true, //强制区分大小写
+    "removeComments": true,
+    "jsx": "preserve", //不转化jsx
+    "declaration": true, //生成声明文件
+    "lib": ["esnext", "dom"]
+  },
+  "include": ["packages/*/src", "packages/*/*.ts", "typings/*.d.ts"],
+  "exclude": ["node_modules"]
+}
