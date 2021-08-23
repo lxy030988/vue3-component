@@ -1,0 +1,49 @@
+@import '../common/var.scss';
+
+// .l-button {color:red}
+// @include b(button) {
+//   color: red;
+// }
+@mixin b($block) {
+  $classname: $namespace + '-' + $block;
+  .#{$classname} {
+    @content;
+  }
+}
+
+// .l-button.is-disabled  {color:red}
+// @include b(button) {
+//   @include when(disabled) {
+//     color: red;
+//   }
+// }
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+// l-button--primary
+// @include b(button) {
+//   @include m(primary) {
+//     color: green;
+//   }
+// }
+@mixin m($modifier) {
+  @at-root {
+    #{& + $modifier-separator + $modifier} {
+      @content;
+    }
+  }
+}
+
+//&__header  => .l-button__header
+@mixin e($element) {
+  @at-root {
+    #{ & + $element-separator + $element} {
+      @content;
+    }
+  }
+}

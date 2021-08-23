@@ -12,7 +12,7 @@ module.exports = {
   },
   resolve: {
     //解析模块 对应的扩展名有哪些
-    extensions: ['.ts', '.tsx', '.js', '.vue'],
+    extensions: ['.ts', '.tsx', '.js', '.vue']
   },
   module: {
     rules: [
@@ -27,15 +27,19 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /\.(svg|otf|ttf|woff|woff2|gif|jpg|jpeg|png)?$/,
+        test: /\.(gif|jpg|jpeg|png)?$/,
         exclude: /node_modules/,
+        loader: 'url-loader'
+      },
+      {
+        test: /fonts\/.*\.(woff|woff2|eot|ttf|svg)?$/,
         loader: 'url-loader'
       },
       {
         test: /\.(scss|css)?$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader']
-      },
+      }
     ]
   },
   plugins: [

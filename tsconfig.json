@@ -18,6 +18,11 @@
     "declaration": true, //生成声明文件
     "lib": ["esnext", "dom"]
   },
-  "include": ["packages/*/src", "packages/*/*.ts", "typings/*.d.ts"],
+  "include": [
+    "packages/*/src",
+    "packages/*/*.ts",
+    "typings/*.d.ts",
+    "website/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

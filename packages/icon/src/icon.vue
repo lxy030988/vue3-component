@@ -1,13 +1,20 @@
 <template>
-  <div>icon</div>
+  <i :class="className"></i>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 export default defineComponent({
   name: 'LIcon',
-  setup() {
-    return {}
+  props: {
+    name: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props) {
+    const className = computed(() => 'l-icon-' + props.name)
+    return { className }
   }
 })
 </script>
