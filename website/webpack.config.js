@@ -31,6 +31,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'url-loader'
       },
+      //必须带上fonts文件夹才能解析成功
       {
         test: /fonts\/.*\.(woff|woff2|eot|ttf|svg)?$/,
         loader: 'url-loader'

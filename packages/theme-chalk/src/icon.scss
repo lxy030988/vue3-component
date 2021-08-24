@@ -14,6 +14,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.l-icon-loading:before {
+  content: '\e608';
+}
+
 .l-icon-quanping:before {
   content: '\e607';
 }
@@ -28,4 +32,19 @@
 
 .l-icon-hebingzhuanfa:before {
   content: '\e606';
+}
+
+@keyframes roate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+//transform对行内元素不生效
+.#{$namespace}-icon-loading {
+  animation: roate 2s infinite linear;
+  display: inline-block;
 }

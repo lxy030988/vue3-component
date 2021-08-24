@@ -10,7 +10,7 @@
     </div> -->
 
     <l-button />
-    <l-icon name="quanping" />
+    <l-icon name="loading" />
   </div>
 </template>
 
