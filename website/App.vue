@@ -9,8 +9,8 @@
       <div class="l-xxx__footer"></div>
     </div> -->
 
-    <l-button />
-    <l-icon name="loading" />
+    <l-button icon="hebingzhuanfa">bbbbb</l-button>
+    <!-- <l-icon name="loading" /> -->
   </div>
 </template>
 
@@ -20,6 +20,6 @@ export default defineComponent({
   name: 'App',
   setup() {
     return {}
-  }
+  },
 })
 </script>

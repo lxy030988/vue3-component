@@ -1,5 +1,6 @@
 module.exports = {
-  presets: [ //babel 解析预设 从后往前执行
+  presets: [
+    //babel 解析预设 从后往前执行
     // [
     //   '@babel/preset-env',
     //   {
@@ -12,6 +13,12 @@ module.exports = {
     //   }
     // ],
     '@babel/preset-env',
-    '@babel/preset-typescript'
-  ]
+    '@babel/preset-typescript',
+  ],
+  overrides: [
+    {
+      test: /\.vue$/,
+      plugins: ['@babel/transform-typescript'],
+    },
+  ],
 }
