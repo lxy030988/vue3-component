@@ -5,7 +5,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "webpack serve --config ./website/webpack.config.js"
+    "dev": "webpack serve --config ./website/webpack.config.js",
+    "build:theme": "gulp build --gulpfile packages/theme-chalk/gulp.js"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -16,6 +17,11 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-rename": "^2.0.0",
     "html-webpack-plugin": "^5.3.2",
     "lerna": "^4.0.0",
     "sass": "^1.38.0",

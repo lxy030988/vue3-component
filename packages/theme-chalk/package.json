@@ -5,13 +5,13 @@
   "author": "lixiangyu <654762937@qq.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "src/index.scss",
+  "main": "lib/index.css",
   "directories": {
-    "lib": "src",
+    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "src"
+    "lib"
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
