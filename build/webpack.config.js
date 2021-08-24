@@ -1,14 +1,22 @@
 const path = require('path')
-const htmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
-  entry: path.resolve(__dirname, 'main.ts'),
+  mode: 'production',
+  entry: path.resolve(__dirname, '../packages/lxy/index.ts'),
   output: {
-    path: path.resolve(__dirname, '../website-dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, '../lib'),
+    filename: 'index.js',
+    libraryTarget: 'umd', //支持commonjs和amd，不支持es6，可以在浏览器直接使用
+    library: 'lxy'
+  },
+  externals: {
+    //忽略组件使用的vue变量
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue'
+    }
   },
   resolve: {
     //解析模块 对应的扩展名有哪些
@@ -25,28 +33,8 @@ module.exports = {
         test: /\.vue?$/,
         exclude: /node_modules/,
         loader: 'vue-loader'
-      },
-      {
-        test: /\.(gif|jpg|jpeg|png)?$/,
-        exclude: /node_modules/,
-        loader: 'url-loader'
-      },
-      //必须带上fonts文件夹才能解析成功
-      {
-        test: /fonts\/.*\.(woff|woff2|eot|ttf|svg)?$/,
-        loader: 'url-loader'
-      },
-      {
-        test: /\.(scss|css)?$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new htmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html')
-    })
-  ]
+  plugins: [new VueLoaderPlugin()]
 }
