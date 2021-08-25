@@ -47,3 +47,9 @@
     }
   }
 }
+
+@mixin button-type($color, $bg-c, $b-c) {
+  color: $color;
+  background-color: $bg-c;
+  border-color: $b-c;
+}

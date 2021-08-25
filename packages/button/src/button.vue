@@ -1,7 +1,10 @@
 <template>
-  <button :class="className">
-    <i :class="'l-icon-' + icon"></i>
-    <slot></slot>
+  <button :class="className" @click="handleClick">
+    <i v-if="loading" class="'l-icon-loading"></i>
+    <i v-if="icon && !loading" :class="'l-icon-' + icon"></i>
+    <span v-if="$slots.default">
+      <slot></slot>
+    </span>
   </button>
 </template>
 
@@ -35,6 +38,7 @@ export default defineComponent({
     loading: Boolean,
     round: Boolean,
   },
+  emits: ['click'],
   setup(props, ctx) {
     const { type, disabled, loading, round } = props
     const className = computed(() => [
@@ -46,7 +50,10 @@ export default defineComponent({
         'is-round': round,
       },
     ])
-    return { className }
+    const handleClick = (e: any) => {
+      ctx.emit('click', e)
+    }
+    return { className, handleClick }
   },
 })
 </script>
