@@ -17,6 +17,13 @@
       <l-button type="primary" icon="hebingzhuanfa">上一页</l-button>
       <l-button type="primary">下一页<i class="l-icon-hebingzhuanfa"></i></l-button>
     </l-button-group>
+    <hr />
+    <l-row :gutter="20">
+      <l-col :span="6">111</l-col>
+      <l-col :span="6" :offset="2">111</l-col>
+      <l-col :span="6">111</l-col>
+      <l-col :span="6">111</l-col>
+    </l-row>
   </div>
 </template>
 

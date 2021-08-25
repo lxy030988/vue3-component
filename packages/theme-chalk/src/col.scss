@@ -1,0 +1,17 @@
+@import './common/var.scss';
+@import './mixins/mixin.scss';
+
+//24种写法 span 1-24
+
+@include b(col) {
+  box-sizing: border-box;
+  @for $i from 1 to 24 {
+    &.l-col-#{$i} {
+      max-width: ($i/24) * 100%;
+      flex: $i/24;
+    }
+    &.l-col-offset-#{$i} {
+      margin-left: ($i/24) * 100%;
+    }
+  }
+}

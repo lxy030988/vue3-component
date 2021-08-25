@@ -1,13 +1,14 @@
 import Button from '@lxy/button'
 import Icon from '@lxy/icon'
 import ButtonGroup from '@lxy/button-group'
+import Row from '@lxy/row'
+import Col from '@lxy/col'
 import type { App } from 'vue'
 
-const components = [Button, Icon, ButtonGroup]
+const components = [Button, Icon, ButtonGroup, Row, Col]
 
 const install = (app: App) => {
   components.forEach((component) => {
-    console.log(component)
     app.component(component.name, component)
   })
 }
