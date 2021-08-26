@@ -1,36 +1,34 @@
-import { ref, computed, getCurrentInstance, WritableComputedRef } from 'vue'
+import { ref, computed, getCurrentInstance, WritableComputedRef, inject } from 'vue'
 import { toTypeString } from '@vue/shared'
-import type { ICheckboxProps } from './checkbox.type'
+import type { ICheckboxGroupInstance, ICheckboxProps } from './checkbox.type'
 
-// export const useCheckboxGroup = () => {
-//   const ELEMENT = useGlobalConfig()
-//   const elForm = inject(elFormKey, {} as ElFormContext)
-//   const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
-//   const checkboxGroup = inject<ICheckboxGroupInstance>('CheckboxGroup', {})
-//   const isGroup = computed(() => checkboxGroup && checkboxGroup?.name === 'ElCheckboxGroup')
-//   const elFormItemSize = computed(() => {
-//     return elFormItem.size
-//   })
-//   return {
-//     isGroup,
-//     checkboxGroup,
-//     elForm,
-//     ELEMENT,
-//     elFormItemSize,
-//     elFormItem,
-//   }
-// }
+export const useCheckboxGroup = () => {
+  const checkboxGroup = inject<ICheckboxGroupInstance>('LCheckboxGroup', {})
+
+  const isGroup = computed(() => checkboxGroup && checkboxGroup?.name === 'LCheckboxGroup')
+
+  return {
+    isGroup,
+    checkboxGroup,
+  }
+}
 
 const useModel = (props: ICheckboxProps) => {
   const { emit } = getCurrentInstance()!
   const isLimitExceeded = ref(false)
+  const { isGroup, checkboxGroup } = useCheckboxGroup()
+  const store = computed(() => (checkboxGroup ? checkboxGroup.modelValue?.value : props.modelValue))
 
   const model = computed({
     get() {
-      return props.modelValue
+      return isGroup.value ? store.value : props.modelValue
     },
     set(val: any) {
-      emit('update:modelValue', val)
+      if (isGroup.value && Array.isArray(val)) {
+        checkboxGroup?.changeEvent?.(val)
+      } else {
+        emit('update:modelValue', val)
+      }
     },
   })
 
@@ -40,9 +38,10 @@ const useModel = (props: ICheckboxProps) => {
   }
 }
 
-const useCheckboxStatus = (props: ICheckboxProps, { model }: { model: WritableComputedRef<unknown> }) => {
+const useCheckboxStatus = (props: ICheckboxProps, { model }: { model: WritableComputedRef<any> }) => {
   const isChecked = computed(() => {
     const value = model.value
+    // console.log(value, props.label)
     if (toTypeString(value) === '[object Boolean]') {
       return value
     } else if (Array.isArray(value)) {
@@ -83,7 +82,7 @@ const useCheckboxStatus = (props: ICheckboxProps, { model }: { model: WritableCo
 //   }
 // }
 
-// const setStoreValue = (props: IUseCheckboxProps, { model }: PartialReturnType<typeof useModel>) => {
+// const setStoreValue = (props: ICheckboxProps, { model }: { model: WritableComputedRef<any> }) => {
 //   function addToStore() {
 //     if (Array.isArray(model.value) && !model.value.includes(props.label)) {
 //       model.value.push(props.label)

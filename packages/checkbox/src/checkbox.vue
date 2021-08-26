@@ -6,12 +6,13 @@
         v-model="model"
         @change="handleChange"
         :name="name"
+        :value="label"
         :disabled="disabled"
         :indeterminate="indeterminate"
       />
     </span>
     <span class="l-check-box__label">
-      <slot></slot>
+      <slot>{{ label }}</slot>
     </span>
   </div>
 </template>

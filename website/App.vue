@@ -7,7 +7,7 @@
       <div class="l-xxx__header"></div>
       <div class="l-xxx__body"></div>
       <div class="l-xxx__footer"></div>
-    </div> -->
+    </div>-->
 
     <l-button icon="hebingzhuanfa" @click="click">bbbbb</l-button>
     <!-- <l-icon name="loading" /> -->
@@ -15,7 +15,10 @@
     <br />
     <l-button-group>
       <l-button type="primary" icon="hebingzhuanfa">上一页</l-button>
-      <l-button type="primary">下一页<i class="l-icon-hebingzhuanfa"></i></l-button>
+      <l-button type="primary">
+        下一页
+        <i class="l-icon-hebingzhuanfa"></i>
+      </l-button>
     </l-button-group>
     <hr />
     <l-row :gutter="20">
@@ -25,9 +28,13 @@
       <l-col :span="6">111</l-col>
     </l-row>
     <hr />
-    <l-check-box-group>
-      <l-check-box v-model="checkVal" @change="checkboxChange" disabled indeterminate>1</l-check-box>
-      <l-check-box>2</l-check-box>
+    <!-- <l-check-box v-model="checkVal" @change="checkboxChange" disabled indeterminate>1</l-check-box> -->
+
+    <l-check-box-group v-model="checkVal" @change="checkboxChange" disabled indeterminate>
+      <l-check-box :label="1"></l-check-box>
+      <l-check-box :label="2"></l-check-box>
+      <l-check-box :label="3"></l-check-box>
+      <l-check-box :label="4"></l-check-box>
     </l-check-box-group>
   </div>
 </template>
@@ -42,7 +49,7 @@ const useButton = () => {
   return { click }
 }
 const useCheckBox = () => {
-  const checkVal = ref(true)
+  const checkVal = ref([2])
   const checkboxChange = (v) => {
     console.log('checkboxChange', v)
   }
