@@ -24,22 +24,36 @@
       <l-col :span="6">111</l-col>
       <l-col :span="6">111</l-col>
     </l-row>
+    <hr />
+    <l-check-box-group>
+      <l-check-box v-model="checkVal" @change="checkboxChange" disabled indeterminate>1</l-check-box>
+      <l-check-box>2</l-check-box>
+    </l-check-box-group>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { log } from 'console'
+import { defineComponent, ref } from 'vue'
 const useButton = () => {
   const click = () => {
     console.log('click')
   }
   return { click }
 }
+const useCheckBox = () => {
+  const checkVal = ref(true)
+  const checkboxChange = (v) => {
+    console.log('checkboxChange', v)
+  }
+  return { checkVal, checkboxChange }
+}
 export default defineComponent({
   name: 'App',
   setup() {
     return {
       ...useButton(),
+      ...useCheckBox(),
     }
   },
 })
