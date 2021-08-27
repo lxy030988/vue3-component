@@ -40,14 +40,14 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, ctx) {
-    const { type, disabled, loading, round } = props
+    // const { type, disabled, loading, round } = props //props结构出来就没响应式了
     const className = computed(() => [
       'l-button',
-      `l-button--${type}`,
+      `l-button--${props.type}`,
       {
-        'is-disabled': disabled,
-        'is-loading': loading,
-        'is-round': round,
+        'is-disabled': props.disabled,
+        'is-loading': props.loading,
+        'is-round': props.round,
       },
     ])
     const handleClick = (e: any) => {

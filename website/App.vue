@@ -36,11 +36,13 @@
       <l-check-box :label="3"></l-check-box>
       <l-check-box :label="4"></l-check-box>
     </l-check-box-group>
+    <hr />
+
+    <l-transfer v-model="rightValue" :data="transferData" :props="transferProp"></l-transfer>
   </div>
 </template>
 
 <script lang="ts">
-import { log } from 'console'
 import { defineComponent, ref } from 'vue'
 const useButton = () => {
   const click = () => {
@@ -48,20 +50,56 @@ const useButton = () => {
   }
   return { click }
 }
+
 const useCheckBox = () => {
   const checkVal = ref([2])
-  const checkboxChange = (v) => {
+  const checkboxChange = (v: any) => {
     console.log('checkboxChange', v)
   }
   return { checkVal, checkboxChange }
 }
+
+const useTransfer = () => {
+  const generateData = () => {
+    const data = []
+    for (let i = 1; i <= 15; i++) {
+      data.push({
+        key: i,
+        label: `备选项 ${i}`,
+        disabled: i % 4 === 0,
+      })
+    }
+    return ref(data)
+  }
+  return {
+    transferData: generateData(),
+    rightValue: ref([2, 3]),
+    leftValue: [],
+    transferProp: {
+      key: 'key',
+      label: 'label',
+      disabled: 'disabled',
+    },
+  }
+}
+
 export default defineComponent({
   name: 'App',
   setup() {
     return {
       ...useButton(),
       ...useCheckBox(),
+      ...useTransfer(),
     }
   },
 })
 </script>
+<style lang="scss">
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+</style>
