@@ -6,9 +6,10 @@ import Col from '@lxy/col'
 import CheckBox from '@lxy/checkbox'
 import CheckBoxGroup from '@lxy/checkbox-group'
 import Transfer from '@lxy/transfer'
+import Message from '@lxy/message'
 import type { App } from 'vue'
 
-const components = [Button, Icon, ButtonGroup, Row, Col, CheckBox, CheckBoxGroup, Transfer]
+const components = [Button, Icon, ButtonGroup, Row, Col, CheckBox, CheckBoxGroup, Transfer, Message]
 
 const install = (app: App) => {
   components.forEach((component) => {

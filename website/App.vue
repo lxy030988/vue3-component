@@ -39,11 +39,16 @@
     <hr />
 
     <l-transfer v-model="rightValue" :data="transferData" :props="transferProp"></l-transfer>
+    <hr />
+    <!-- <l-message></l-message> -->
+    <button @click="showMessage">显示弹框</button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { Message } from '@lxy/message'
+
 const useButton = () => {
   const click = () => {
     console.log('click')
@@ -86,7 +91,14 @@ const useTransfer = () => {
 export default defineComponent({
   name: 'App',
   setup() {
+    const showMessage = () => {
+      Message({
+        center: true,
+        type: 'success',
+      })
+    }
     return {
+      showMessage,
       ...useButton(),
       ...useCheckBox(),
       ...useTransfer(),
