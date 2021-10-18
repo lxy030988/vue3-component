@@ -1,36 +1,37 @@
-@import './common/var.scss';
+@use './mixins/mixin' as *;
+@use './common/var' as *;
 
 @font-face {
-  font-family: 'l-ui-icons';
-  src: url('./fonts/iconfont.woff') format('woff'),
-    url('./fonts/iconfont.ttf') format('truetype');
+  font-family: '#{$namespace}-ui-icons';
+  src: url('./fonts/iconfont.woff') format('woff'), url('./fonts/iconfont.ttf') format('truetype');
 }
 
-[class^='#{$namespace}-icon'] {
-  font-family: 'l-ui-icons' !important;
+[class^='#{$namespace}-icon'],
+[class*='#{$namespace}-icon'] {
+  font-family: '#{$namespace}-ui-icons' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.l-icon-loading:before {
+.#{$namespace}-icon-loading:before {
   content: '\e608';
 }
 
-.l-icon-quanping:before {
+.#{$namespace}-icon-quanping:before {
   content: '\e607';
 }
 
-.l-icon-gonggao:before {
+.#{$namespace}-icon-gonggao:before {
   content: '\e604';
 }
 
-.l-icon-a-shaixuan:before {
+.#{$namespace}-icon-a-shaixuan:before {
   content: '\e605';
 }
 
-.l-icon-hebingzhuanfa:before {
+.#{$namespace}-icon-hebingzhuanfa:before {
   content: '\e606';
 }
 

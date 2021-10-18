@@ -1,4 +1,6 @@
-@import '../common/var.scss';
+@use '../common/var' as *;
+@forward 'config';
+@use 'config' as *;
 
 // .l-button {color:red}
 // @include b(button) {

@@ -1,4 +1,4 @@
-@import '../mixins/config.scss';
+@use '../mixins/config' as *;
 
 $--color-primary: #409eef;
 $--color-white: #fff;

@@ -9,6 +9,6 @@ Button.install = (app: App) => {
   app.component(Button.name, Button) //注册全局组件
 }
 
-const _Button: TButton = Button
+const _Button: TButton = Button as TButton
 
 export default _Button
