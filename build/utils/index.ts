@@ -17,3 +17,11 @@ export const run = async (command: string) => {
     app.on('close', resolve)
   })
 }
+
+export const pathRewriter = (format) => {
+  return (id: string) => {
+    // console.log('pathRewriter', id, typeof id, format)
+    id = id.replace('@lxy', `lxy/${format}`)
+    return id
+  }
+}
