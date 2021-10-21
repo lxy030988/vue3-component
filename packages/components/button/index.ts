@@ -1,14 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import Button from './src/button.vue'
 
-type TButton = typeof Button & {
-  install(app: App): void
-}
+const LButton = withInstall(Button)
 
-Button.install = (app: App) => {
-  app.component(Button.name, Button) //注册全局组件
-}
+export { LButton }
 
-const _Button: TButton = Button as TButton
-
-export default _Button
+export default LButton

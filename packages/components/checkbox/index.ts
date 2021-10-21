@@ -1,14 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import CheckBox from './src/checkbox.vue'
 
-type TCheckBox = typeof CheckBox & {
-  install(app: App): void
-}
+const LCheckBox = withInstall(CheckBox)
 
-CheckBox.install = (app: App) => {
-  app.component(CheckBox.name, CheckBox) //注册全局组件
-}
+export { LCheckBox }
 
-const _CheckBox: TCheckBox = CheckBox
-
-export default _CheckBox
+export default LCheckBox

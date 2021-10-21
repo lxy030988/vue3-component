@@ -1,14 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import CheckBoxGroup from '../checkbox/src/checkbox-group.vue'
 
-type TCheckBoxGroup = typeof CheckBoxGroup & {
-  install(app: App): void
-}
+const LCheckBoxGroup = withInstall(CheckBoxGroup)
 
-CheckBoxGroup.install = (app: App) => {
-  app.component(CheckBoxGroup.name, CheckBoxGroup) //注册全局组件
-}
+export { LCheckBoxGroup }
 
-const _CheckBoxGroup: TCheckBoxGroup = CheckBoxGroup
-
-export default _CheckBoxGroup
+export default LCheckBoxGroup

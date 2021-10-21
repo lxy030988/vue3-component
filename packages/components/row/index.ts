@@ -1,8 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import Row from '../col/src/row'
 
-Row.install = (app: App) => {
-  app.component(Row.name, Row)
-}
+const LRow = withInstall(Row)
 
-export default Row
+export { LRow }
+
+export default LRow

@@ -12,13 +12,14 @@ import { pathRewriter, run } from './utils'
 import { Project, SourceFile } from 'ts-morph'
 import fs from 'fs/promises'
 import * as VueCompiler from '@vue/compiler-sfc'
+
 const buildEachComponent = async () => {
   // 打包每个组件
-  // const files = sync('*', {
-  //   cwd: compRoot,
-  //   onlyDirectories: true, //只要文件夹
-  // })
-  const files = ['icon']
+  const files = sync('*', {
+    cwd: compRoot,
+    onlyDirectories: true, //只要文件夹
+  })
+  // const files = ['icon', 'message']
   // 分别把components 文件夹下的组件 放到dist/es/components下 和 dist/lib/compmonents
   const builds = files.map(async (file: string) => {
     const input = path.resolve(compRoot, file, 'index.ts') // 每个组件的入口
@@ -60,12 +61,13 @@ async function genTypes() {
     skipAddingFilesFromTsConfig: true,
   })
 
-  const filePaths = await glob('**/*', {
+  const filePaths = await glob('**/*.(ts|vue)', {
     // ** 任意目录  * 任意文件
     cwd: compRoot,
     onlyFiles: true,
     absolute: true,
   })
+  // console.log('filePaths', filePaths)
 
   const sourceFiles: SourceFile[] = []
 
@@ -106,6 +108,7 @@ async function genTypes() {
 
   await Promise.all(tasks)
 }
+
 function copyTypes() {
   const src = path.resolve(outDir, 'types/components/')
   const copy = (module) => {
@@ -132,4 +135,4 @@ async function buildComponentEntry() {
   )
 }
 
-export const buildComponent = series(buildEachComponent)
+export const buildComponent = series(buildEachComponent, genTypes, copyTypes())

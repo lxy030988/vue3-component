@@ -1,8 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import Col from './src/col'
 
-Col.install = (app: App) => {
-  app.component(Col.name, Col)
-}
+const LCol = withInstall(Col)
 
-export default Col
+export { LCol }
+
+export default LCol

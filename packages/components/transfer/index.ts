@@ -1,14 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import Transfer from './src/transfer.vue'
 
-type TTransfer = typeof Transfer & {
-  install(app: App): void
-}
+const LTransfer = withInstall(Transfer)
 
-Transfer.install = (app: App) => {
-  app.component(Transfer.name, Transfer) //注册全局组件
-}
+export { LTransfer }
 
-const _Transfer: TTransfer = Transfer
-
-export default _Transfer
+export default LTransfer

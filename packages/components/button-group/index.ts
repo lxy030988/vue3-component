@@ -1,14 +1,9 @@
-import type { App } from 'vue'
+import { withInstall } from '@lxy/utils/with-intall'
+
 import ButtonGroup from '../button/src/button-group.vue'
 
-type TButtonGroup = typeof ButtonGroup & {
-  install(app: App): void
-}
+const LButtonGroup = withInstall(ButtonGroup)
 
-ButtonGroup.install = (app: App) => {
-  app.component(ButtonGroup.name, ButtonGroup) //注册全局组件
-}
+export { LButtonGroup }
 
-const _ButtonGroup: TButtonGroup = ButtonGroup
-
-export default _ButtonGroup
+export default LButtonGroup
