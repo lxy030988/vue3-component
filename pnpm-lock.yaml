@@ -21,6 +21,7 @@ importers:
       gulp-clean-css: ^4.3.0
       gulp-sass: ^5.0.0
       gulp-typescript: ^6.0.0-alpha.1
+      lxy: workspace:^1.0.0
       rollup: ^2.58.0
       rollup-plugin-typescript2: ^0.30.0
       rollup-plugin-vue: ^6.0.0
@@ -33,6 +34,7 @@ importers:
       '@lxy/components': link:packages/components
       '@lxy/theme-chalk': link:packages/theme-chalk
       '@lxy/utils': link:packages/utils
+      lxy: link:packages/lxy
     devDependencies:
       '@rollup/plugin-commonjs': 21.0.1_rollup@2.58.0
       '@rollup/plugin-node-resolve': 13.0.6_rollup@2.58.0

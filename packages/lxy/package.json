@@ -4,6 +4,15 @@
   "description": "> TODO: description",
   "author": "lixiangyu <654762937@qq.com>",
   "license": "ISC",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    },
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./*": "./*"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {

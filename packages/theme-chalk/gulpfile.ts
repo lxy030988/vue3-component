@@ -20,6 +20,7 @@ function copyfont() {
 }
 
 function copyfullStyle() {
+  //这边路径有问题
   return src(path.resolve(__dirname, './dist/**')).pipe(dest(path.resolve(__dirname, '../../dist/theme-chalk')))
 }
 
