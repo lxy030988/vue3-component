@@ -135,4 +135,4 @@ async function buildComponentEntry() {
   )
 }
 
-export const buildComponent = series(buildEachComponent, genTypes, copyTypes())
+export const buildComponent = series(buildEachComponent, genTypes, copyTypes(), buildComponentEntry)
