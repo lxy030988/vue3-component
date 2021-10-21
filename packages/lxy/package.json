@@ -5,6 +5,7 @@
   "author": "lixiangyu <654762937@qq.com>",
   "license": "ISC",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   }
