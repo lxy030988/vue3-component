@@ -46,13 +46,14 @@ async function buildEntry() {
   const entryFiles = await fs.readdir(lxyRoot, { withFileTypes: true })
   const entryPoints = entryFiles
     .filter((f) => f.isFile())
-    .filter((f) => !['package.json'].includes(f.name))
+    // .filter((f) => !['package.json'].includes(f.name))
+    .filter((f) => f.name.endsWith('.ts'))
     .map((f) => path.resolve(lxyRoot, f.name))
 
   const config = {
     input: entryPoints,
     plugins: [nodeResolve(), vue(), typescript()],
-    external: (id: string) => /^vue/.test(id) || /^@z-plus/.test(id),
+    external: (id: string) => /^vue/.test(id) || /^@lxy/.test(id),
   }
   const bundle = await rollup(config)
   return Promise.all(
@@ -66,6 +67,6 @@ async function buildEntry() {
   )
 }
 
-export const buildFullComponent = parallel(buildFull)
+export const buildFullComponent = parallel(buildFull, buildEntry)
 
 // gulp适合流程控制 和 代码的转义 没有打包的功能
